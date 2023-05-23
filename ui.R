@@ -2,7 +2,6 @@
 library(shiny)
 library(tidyverse)
 library(rio)
-library(ggthemes)
 library(rsconnect)
 
 # Load dataset 
@@ -31,7 +30,7 @@ ui=shinyUI(fluidPage(
     column(3, 
            wellPanel(
              p("Select a continuous variable and graph type (histogram or boxplot) to view on the right."),
-             radioButtons("radio_continuous","Continuous",choices=c("age","hours_per_week")),   # add radio buttons for continuous variables
+             radioButtons("continuous_variable","Continuous",choices=c("age","hours_per_week")),   # add radio buttons for continuous variables
              radioButtons("graph_type","Graph",choices=c("histogram","boxplot"))    # add radio buttons for chart type
            )),
     column(9, plotOutput("p1"))  # add plot output
@@ -42,7 +41,7 @@ ui=shinyUI(fluidPage(
     column(3, 
            wellPanel(
              p("Select a categorical variable to view bar chart on the right. Use the check box to view a stacked bar chart to combine the income levels into one graph. "),
-             radioButtons("radio_continuous","Categorical",choices=c("education","workclass","sex")),    # add radio buttons for categorical variables
+             radioButtons("categorical_variable","Categories",choices=c("education","workclass","sex")),    # add radio buttons for categorical variables
              checkboxInput("is_stacked","Stack Bar",value=FALSE)     # add check box input for stacked bar chart option
            )),
     column(9, plotOutput("p2"))  # add plot output
